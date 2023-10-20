@@ -87,3 +87,22 @@ var finances = [
     ['Feb-2017', 671099],
   ];
   
+
+// Total number of months:
+let totalMonths = finances.length;
+document.getElementById('totalMonths').innerText = "Total Months: " + totalMonths;
+
+// Net profit / loss
+let netProfit = 0;
+for (let i = 0; i < totalMonths; i++) {
+  netProfit += finances[i][1];
+}
+document.getElementById('totalProfitLoss').innerText = "Net profit/loss: £" + netProfit;
+
+// Average changes in profit / loss
+let averageChange = Math.floor(netProfit / totalMonths);
+
+// Greatest increase in Profit / loss
+/**
+ * This 
+ */
