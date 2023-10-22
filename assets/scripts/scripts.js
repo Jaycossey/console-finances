@@ -87,3 +87,68 @@ var finances = [
     ['Feb-2017', 671099],
   ];
   
+
+// VARIABLES AND ARRAYS ------------------
+// Total number of months:
+let totalMonths = finances.length;
+
+// Net profit / loss
+let netProfit = 0;
+
+// Average changes
+let averageChange;
+
+// Array to store changes in profit over each month
+const monthByMonthChanges = [totalMonths + 1];
+
+
+// FUNCTIONS -----------------------------
+/**
+ * How do I find the biggest change? I can sort the month by month 
+ * changes but then I need to make sure that the actual month would be 
+ * listed as well. I can do this how? 
+ * 
+ * sort the monthbymonthchanges
+ * loop through finances array - 1
+ * if ((finances[i + 1][1] - finances[i][1]) == monthbymonth[0])
+ *    print finances[i + 1]
+ * else if ((finances[i + 1][1] - finances[i][1]) == monthbymonth[totalMonths - 1])
+ *    print finances[i + 1]
+ */
+
+// find average changes
+function findAverageChanges() {
+  // temp to store total
+  let temp = 0;
+  // add all changes in array to temp
+  monthByMonthChanges.forEach((number) => {
+    temp += number;
+  })
+
+  // round to 2 decimal places the average
+  averageChange = Math.floor(temp / (totalMonths - 1) * 100);
+  averageChange = averageChange / 100;
+}
+
+// monthly changes to profit
+function monthlyChanges() {
+  // iterate through finances and add those differences to array
+  // add net profit
+  for (let i = 0; i < totalMonths - 1; i++) {
+    netProfit += finances[i][1];
+    monthByMonthChanges[i] = finances[i + 1][1] - finances[i][1];
+  }
+
+  // finish adding net profit
+  netProfit += finances[totalMonths -1][1];
+
+  // call average function to continue program
+  findAverageChanges();
+}
+
+monthlyChanges();
+
+
+document.getElementById('totalMonths').innerText = "Total Months: " + totalMonths;
+document.getElementById('totalProfitLoss').innerText = "Net profit/loss: £" + netProfit;
+document.getElementById('averageChanges').innerText = "Average Change: " + averageChange;
