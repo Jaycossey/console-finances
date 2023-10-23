@@ -101,21 +101,12 @@ let averageChange;
 // Array to store changes in profit over each month
 const monthByMonthChanges = [totalMonths + 1];
 
+// Greatest increase / decrease
+let greatestProfit;
+let greatestLoss;
+
 
 // FUNCTIONS -----------------------------
-/**
- * How do I find the biggest change? I can sort the month by month 
- * changes but then I need to make sure that the actual month would be 
- * listed as well. I can do this how? 
- * 
- * sort the monthbymonthchanges
- * loop through finances array - 1
- * if ((finances[i + 1][1] - finances[i][1]) == monthbymonth[0])
- *    print finances[i + 1]
- * else if ((finances[i + 1][1] - finances[i][1]) == monthbymonth[totalMonths - 1])
- *    print finances[i + 1]
- */
-
 // find average changes
 function findAverageChanges() {
   // temp to store total
@@ -129,6 +120,7 @@ function findAverageChanges() {
   averageChange = Math.floor(temp / (totalMonths - 1) * 100);
   averageChange = averageChange / 100;
 }
+
 
 // monthly changes to profit
 function monthlyChanges() {
@@ -146,9 +138,35 @@ function monthlyChanges() {
   findAverageChanges();
 }
 
+function assignGreatest() {
+  // Learning about Math.max / Math.min was a great help, hate sorting algorithms
+  let increase = Math.max(...monthByMonthChanges);
+  let decrease = Math.min(...monthByMonthChanges);
+  
+  // loop through finances array 
+  for (let i = 0; i < finances.length - 1; i++) {
+    // determine and assign months to greatest profit/loss
+    if ((finances[i + 1][1] - finances[i][1]) == increase) {
+      greatestProfit = finances[i + 1][0] + " £" + increase;
+    } else if ((finances[i + 1][1] - finances[i][1]) == decrease) {
+      greatestLoss = finances[i + 1][0] + " £" + decrease;
+    }
+  }
+}
+
+
+// call functions -----------------------------------
 monthlyChanges();
+assignGreatest();
 
-
+// Assign values to elements ------------------------
 document.getElementById('totalMonths').innerText = "Total Months: " + totalMonths;
 document.getElementById('totalProfitLoss').innerText = "Net profit/loss: £" + netProfit;
 document.getElementById('averageChanges').innerText = "Average Change: " + averageChange;
+document.getElementById('greatestProfit').innerText = "Greatest Increase: " + greatestProfit;
+document.getElementById('greatestLoss').innerText = "Greatest Loss: " + greatestLoss;
+
+
+// Log values to console ----------------------------
+console.log("Total Months: " + totalMonths + "\nNet Profit/Loss: " + netProfit + "\nAverageChange: " + averageChange);
+console.log(document.getElementById('greatestProfit').innerText + "\n" + document.getElementById('greatestLoss').innerText);
