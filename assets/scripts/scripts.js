@@ -139,7 +139,7 @@ function monthlyChanges() {
 }
 
 function assignGreatest() {
-  // Learning about Math.max / Math.min was a great help, hate sorting algorithms
+  // Learning about Math.max / Math.min was a great help, sorting algorithms hurt :) 
   let increase = Math.max(...monthByMonthChanges);
   let decrease = Math.min(...monthByMonthChanges);
   
