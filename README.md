@@ -18,16 +18,10 @@ While the project was designed for the console, I aim to add a front end display
 - CSS
 - Javascript
 
-## Roadmap 
-
-- Create HTML, CSS, JS files
-- Link the 3 files together
-- Create JS algorithm for the calculations
-- Create front end display for data
-
 ## Usage 
 
-N/A - Project still in development
+This project can be viewed at: 
+https://jaycossey.github.io/console-finances/
 
 ## License
 
