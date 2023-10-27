@@ -18,11 +18,13 @@ While the project was designed for the console, I aim to add a front end display
 - CSS
 - Javascript
 
+
 ![Screenshot](./assets/images/screenshot.PNG)
 
 ## Usage 
 
-N/A - Project still in development
+This project can be viewed at: 
+https://jaycossey.github.io/console-finances/
 
 ## License
 
